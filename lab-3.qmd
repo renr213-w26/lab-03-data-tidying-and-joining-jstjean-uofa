@@ -410,7 +410,28 @@ a\. Create a vector called `divisions_of_interest` which contains the descriptio
 Refer back to the guidance provided in [Question 6] if you're not sure how to create this vector.
 :::
 
+```{r}
+divisions_of_interest <- c(
+  "Food and non-Alcoholic beverages",
+  "Housing, water, electricity, gas and other fuels",
+  "Transport",
+  "Communication"
+)
+```
+
+Comment: I chose these 4 because they represent the costs of essentials for the average household.
+
 b\. In a single pipeline, filter your reshaped dataset to include only the `divisions_of_interest` from part (a), and save the resulting data frame with a new name so you (1) can refer to this data frame later in your analysis and (2) do not overwrite the data frame you're starting with. Use a short but informative name. Then, in a new pipeline, find the `distinct()` divisions in the data frame you created.
+
+```{r}
+us_inflation_interest <- us_inflation_join |>
+  filter(description %in% divisions_of_interest)
+```
+
+```{r}
+us_inflation_interest |>
+  distinct(description)
+```
 
 ### Question 10
 
