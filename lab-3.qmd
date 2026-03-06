@@ -295,10 +295,40 @@ Using your data frame from the previous question, create a plot of annual inflat
 Requirements for the plot:
 
 -   Data should be represented with points as well as lines connecting the points for each country.
+
 -   Each country should be represented by a different color line and different color and shape points.
+
 -   Axes and legend should be properly labeled.
+
 -   The plot should have an appropriate title (and optionally a subtitle).
+
 -   Plot should be customized in at least one way – you could use a different than default color scale, or different than default theme, or some other customization.
+
+    ```{r}
+    ggplot(inflation_interest, aes(x=year, 
+    y= annual_inflation, colour = country, shape = country)) +
+      geom_line() +
+      geom_point(size = 3) +
+      scale_colour_manual(
+        values = c(
+          "France" = "darkblue",
+          "Canada" = "darkred",
+          "Australia" = "lightblue",
+          "Japan" = "red"
+        )
+      ) +
+      labs(
+        title = "Annual Inflation Rates for Developed Countries Across the World",
+        subtitle = "1993-2021",
+        x = "Year",
+        y = "Inflation (%)",
+        colour = "Country",
+        shape = "Country"
+      )+
+      theme_minimal()
+    ```
+
+    Comment: The patterns of this plot reveal that Australia, Canada and France during most years are expieriencing an increase in inflation while Japan is often near 0% or in the negatives (decrease). I am not very familiar with Japan's economy so this is surprising to me. It is not surprising to me that Canada and France follow similar patterns but Australia being often much higher is also a surprise.
 
 ::: render-commit-push
 If you haven't yet done so, now is a good time to render, commit, and push. Make sure that you commit and push all changed documents and your Git pane is completely empty before proceeding.
