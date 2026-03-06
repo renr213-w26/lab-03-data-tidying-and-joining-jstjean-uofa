@@ -308,7 +308,7 @@ Requirements for the plot:
     ggplot(inflation_interest, aes(x=year, 
     y= annual_inflation, colour = country, shape = country)) +
       geom_line() +
-      geom_point(size = 3) +
+      geom_point(size = 2) +
       scale_colour_manual(
         values = c(
           "France" = "darkblue",
@@ -318,7 +318,7 @@ Requirements for the plot:
         )
       ) +
       labs(
-        title = "Annual Inflation Rates for Developed Countries Across the World",
+        title = "Annual Inflation Rates for Developed Countries",
         subtitle = "1993-2021",
         x = "Year",
         y = "Inflation (%)",
@@ -328,7 +328,7 @@ Requirements for the plot:
       theme_minimal()
     ```
 
-    Comment: The patterns of this plot reveal that Australia, Canada and France during most years are expieriencing an increase in inflation while Japan is often near 0% or in the negatives (decrease). I am not very familiar with Japan's economy so this is surprising to me. It is not surprising to me that Canada and France follow similar patterns but Australia being often much higher is also a surprise.
+    Comment: The patterns of this plot reveal that Australia, Canada and France during most years are experiencing an increase in inflation while Japan is often near 0% or in the negatives (decrease). I am not very familiar with Japan's economy so this is surprising to me. It is not surprising to me that Canada and France follow similar patterns but Australia being often much higher is also a surprise.
 
 ::: render-commit-push
 If you haven't yet done so, now is a good time to render, commit, and push. Make sure that you commit and push all changed documents and your Git pane is completely empty before proceeding.
@@ -445,12 +445,35 @@ Using your data frame from the previous question, create a plot of annual inflat
 -   If your legend has labels that are too long, you can try moving the legend to the bottom and stack the labels vertically. *Hint:* The `legend.position` and `legend.direction` arguments of the `theme()` functions will be useful.
 
 ```{r}
-ggplot() +
-  theme(
+us_inflation_interest |>
+ggplot(aes(x = year, y = annual_inflation, colour = description, shape = description,)) +
+  geom_line() + 
+  geom_point(size = 2) +
+  scale_colour_manual(
+    values = c(
+      "Food and non-Alcoholic beverages" = "green",
+      "Housing, water, electricity, gas and other fuels" = "brown",
+      "Transport" = "red",
+      "Communication" = "blue"
+    )
+  )+ 
+  labs(
+    title = "U.S Annual Inflation by CPI Division",
+    subtitle = "Divisions related to essential household spending",
+    x = "Year",
+    y = "Inflation (%)",
+    colour = "Division",
+    shape = "Division"
+  )+ 
+  theme_minimal()+
+theme(
     legend.position = "bottom", 
     legend.direction = "vertical"
-  )
+  ) 
+  
 ```
+
+Comment: It appears that for the most part the inflation of Communication, Food and non-Alcoholic beverages and Housing, water, electricity, gas and other fuels are relatively stable. It is surprising to me that Transport is the most variable, jumping up and down and hitting the highest and lowest values and it makes me wonder why that is.
 
 ::: render-commit-push
 If you haven't yet done so since Part 1, now is a good time to render, commit, and push. Make sure that you commit and push all changed documents and your Git pane is completely empty before proceeding.
