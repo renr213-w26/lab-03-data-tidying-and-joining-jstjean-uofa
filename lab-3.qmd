@@ -367,7 +367,19 @@ cpi_divisions <- read_csv("data/cpi-divisions.csv")
 
 a\. How many columns and how many rows does the `us_inflation` dataset have? What are the variables in it? Add a brief (1-2 sentences) narrative summarizing this information.
 
+```{r}
+glimpse(us_inflation)
+```
+
+Comment: It has 132 rows and 4 columns.
+
 b\. How many columns and how many rows does the `cpi_divisions` dataset have? What are the variables in it? Add a brief (1-2 sentences) narrative summarizing this information.
+
+```{r}
+glimpse(cpi_divisions)
+```
+
+Comment: it has 12 rows and 2 columns. It has the id number and the description of what each division is responsible for.
 
 c\. Create a new dataset by joining the `us_inflation` dataset with the `cpi_division_id` dataset.
 
@@ -378,6 +390,17 @@ c\. Create a new dataset by joining the `us_inflation` dataset with the `cpi_div
 -   Use a short but informative name for the joined dataset, and do not overwrite either of the datasets that go into creating it.
 
 Then, find the number of rows and columns of the resulting dataset and report the names of its columns. Add a brief (1-2 sentences) narrative summarizing this information.
+
+```{r}
+us_inflation_join <- us_inflation |>
+  left_join(cpi_divisions, by = c("cpi_division_id" = "id"))
+```
+
+```{r}
+glimpse(us_inflation_join)
+```
+
+Comment: It has 132 rows and 5 columns with the names "country", "cpi_division_id", "year", "annual inflation", and "description".
 
 ### Question 9
 
