@@ -163,6 +163,15 @@ Which country's inflation change is the largest over this time period? Did infla
 For this question you'll once again need to use variables whose names are numbers (years) in your pipeline. Make sure to surround the names of such variables with backticks (`` ` ``).
 :::
 
+```{r}
+country_inflation|>
+  mutate(inf_ratio = `2021` / `1993`)|>
+  arrange(desc(inf_ratio))|>
+  select(country, inf_ratio)
+```
+
+Comment: The country with the largest inflation change was New Zealand, it's inflation increased by 3.06 between 1993 and 2021.
+
 ### Question 4
 
 Reshape (pivot) `country_inflation` such that each row represents a country/year combination, with columns `country`, `year`, and `annual_inflation`. Then, display the resulting data frame and state how many rows and columns it has.
