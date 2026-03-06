@@ -208,9 +208,33 @@ Requirement: Your code must use the `filter()` function for each part, not `arra
 
 a.  What is the highest inflation rate observed between 1993 and 2021? The output of the pipeline should be a data frame with one row and three columns. In addition to code and output, your response should include a single sentence stating the country and year.
 
+    ```{r}
+
+    inflation_pivot |>
+      filter(annual_inflation == max(annual_inflation, na.rm = TRUE))
+    ```
+
+    Comment: The highest inflation rate is Brazil in 1994 at 2,075% increase.
+
 b.  What is the lowest inflation rate observed between 1993 and 2021? The output of the pipeline should be a data frame with one row and three columns. In addition to code and output, your response should include a single sentence stating the country and year.
 
+    ```{r}
+
+    inflation_pivot |>
+      filter(annual_inflation == min(annual_inflation, na.rm = TRUE))
+    ```
+
+    Comment: The lowest inflation rate is Ireland in 2009 with a 4.48% decrease. (-4.48%)
+
 c.  Putting (a) and (b) together: What are the highest and the lowest inflation rates observed between 1993 and 2021? The output of the pipeline should be a data frame with two rows and three columns.
+
+    ```{r}
+    inflation_pivot |>
+      filter(
+        annual_inflation == max(annual_inflation, na.rm = TRUE) |
+      annual_inflation == min(annual_inflation, na.rm = TRUE)
+      )
+    ```
 
 ### Question 6
 
