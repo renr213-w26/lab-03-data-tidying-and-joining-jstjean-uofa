@@ -1,6 +1,8 @@
 ---
 title: "Lab 3 - Data tidying and joining"
 categories: "Lab"
+author: "Jessica St. Jean"
+format: "pdf"
 ---
 
 # Introduction
@@ -103,7 +105,20 @@ Get to know the data.
 
 a.  `glimpse()` at the `country_inflation` data frame and answer the following questions based on the output. How many rows does `country_inflation` have and what does each row represent? How many columns does `country_inflation` have and what does each column represent?
 
+    ```{r}
+    glimpse(country_inflation)
+    ```
+
+    Comment: It has 44 rows that represent the country. It has 30 columns which represent the various inflation levels as percentages by year.
+
 b.  Display a list of the countries included in the dataset.
+
+    ```{r}
+
+    country_inflation |>
+      distinct(country) |>
+      pull(country) 
+    ```
 
 ::: callout-tip
 A function that can be useful for part (b) is `pull()`. Check out its documentation for examples of usage.
@@ -270,8 +285,7 @@ Using your data frame from the previous question, create a plot of annual inflat
 -   If your legend has labels that are too long, you can try moving the legend to the bottom and stack the labels vertically. *Hint:* The `legend.position` and `legend.direction` arguments of the `theme()` functions will be useful.
 
 ```{r}
-ggplot(...) +
-  ... +
+ggplot() +
   theme(
     legend.position = "bottom", 
     legend.direction = "vertical"
@@ -329,5 +343,3 @@ You can earn up to 4 points on each question:
 -   1: Response shows effort and misses many of the rubric items.
 
 -   0: Response does not show sufficient effort or understanding and/or is largely incomplete.
-
-
