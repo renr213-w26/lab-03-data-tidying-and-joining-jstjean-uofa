@@ -368,10 +368,10 @@ cpi_divisions <- read_csv("data/cpi-divisions.csv")
 a\. How many columns and how many rows does the `us_inflation` dataset have? What are the variables in it? Add a brief (1-2 sentences) narrative summarizing this information.
 
 ```{r}
-glimpse(us_inflation)
+view(us_inflation)
 ```
 
-Comment: It has 132 rows and 4 columns.
+Comment: It has 132 rows and 4 columns. The variables are country, cpi division id, year, and annual inflation.
 
 b\. How many columns and how many rows does the `cpi_divisions` dataset have? What are the variables in it? Add a brief (1-2 sentences) narrative summarizing this information.
 
