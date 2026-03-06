@@ -128,6 +128,21 @@ A function that can be useful for part (b) is `pull()`. Check out its documentat
 
 Which countries had the top three highest inflation rates in 2021? Your output should be a data frame with two columns, `country` and `2021`, with inflation rates in descending order, and three rows for the top three countries. Briefly comment on how the inflation rates for these countries compare to the inflation rate for United States in that year.
 
+```{r}
+country_inflation |>
+  select(country, `2021`)|>
+  arrange(desc(`2021`))|>
+  head(n=3)
+```
+
+```{r}
+country_inflation |>
+  filter(country == "United States")|>
+  select(country, `2021`)
+```
+
+Comment: The 3 countries with the highest inflation rates in 2021 were Argentina (\~48%), Turkiye ( \~20%), and Brazil ( \~8%). These rates are a significant amount higher (almost 10 times higher in the case of Argentina) than the United States 2021 inflation rate which was approximately 5%.
+
 ::: callout-tip
 Column names that are numbers are not considered "proper" in R, therefore to select them you'll need to surround them with backticks, e.g. `select(` `` ` `` `1993` `` ` `` `)`.
 :::
